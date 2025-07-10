@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { OpenAIRequest, GeminiMessage, APIError } from '../types';
+import { OpenAIRequest } from '../types';
 
 export async function callOpenAI(
   request: OpenAIRequest,
@@ -13,11 +13,11 @@ export async function callOpenAI(
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
+        ...request,
         model: 'gpt-4o-mini',
         messages: request.messages,
         temperature: 0.7,
         max_tokens: 10000,
-        ...request,
       }),
     });
 
@@ -121,12 +121,12 @@ export async function* callOpenAIStream(
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
+        ...request,
         model: 'gpt-4o-mini',
         messages: request.messages,
         temperature: 0.7,
         max_tokens: 10000,
         stream: true,
-        ...request,
       }),
     });
 
@@ -164,6 +164,7 @@ export async function* callOpenAIStream(
             }
           } catch (e) {
             // Skip invalid JSON
+            console.error('Invalid JSON:', e);
           }
         }
       }

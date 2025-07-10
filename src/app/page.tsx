@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { ModelProvider, Message } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import ModelSelector from '../components/ModelSelector';

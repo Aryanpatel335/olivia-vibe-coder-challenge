@@ -39,7 +39,6 @@ export default function ApiKeyManager({
     onApiKeyChange('');
   };
 
-  const isValid = validateApiKey(modelProvider, inputValue);
   const hasKey = apiKey.length > 0;
 
   return (

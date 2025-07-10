@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Message, ModelProvider } from '../types';
-import { callOpenAI, callGemini, callOpenAIStream, callGeminiStream } from '../utils/api';
+import { callOpenAIStream, callGeminiStream } from '../utils/api';
 
 interface ChatInterfaceProps {
   modelProvider: ModelProvider;
